@@ -46,6 +46,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8389B5FA22E73EAA008BF8A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8389B5FB22E73ED3008BF8A6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		83FB2D9522E1EC960094F166 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +81,8 @@
 		83FB2DA022E1EC960094F166 /* MessengerApp */ = {
 			isa = PBXGroup;
 			children = (
+				8389B5FB22E73ED3008BF8A6 /* Controller */,
+				8389B5FA22E73EAA008BF8A6 /* Views */,
 				83FB2DA122E1EC960094F166 /* AppDelegate.swift */,
 				83FB2DA322E1EC960094F166 /* ViewController.swift */,
 				83FB2DA822E1EC980094F166 /* Assets.xcassets */,
