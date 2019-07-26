@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8389B5FE22E7409D008BF8A6 /* ContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389B5FD22E7409D008BF8A6 /* ContactController.swift */; };
 		83FB2DA222E1EC960094F166 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB2DA122E1EC960094F166 /* AppDelegate.swift */; };
 		83FB2DA422E1EC960094F166 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB2DA322E1EC960094F166 /* ViewController.swift */; };
 		83FB2DA922E1EC980094F166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FB2DA822E1EC980094F166 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* Begin PBXFileReference section */
 		53B2DFB915559846BF395868 /* Pods_MessengerApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MessengerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8357ED215247B59E6176B256 /* Pods-MessengerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MessengerApp.release.xcconfig"; path = "Target Support Files/Pods-MessengerApp/Pods-MessengerApp.release.xcconfig"; sourceTree = "<group>"; };
+		8389B5FD22E7409D008BF8A6 /* ContactController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactController.swift; sourceTree = "<group>"; };
 		83FB2D9E22E1EC960094F166 /* MessengerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessengerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83FB2DA122E1EC960094F166 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83FB2DA322E1EC960094F166 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 		8389B5FA22E73EAA008BF8A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8389B5FF22E745AE008BF8A6 /* Contact */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -56,8 +59,24 @@
 		8389B5FB22E73ED3008BF8A6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8389B5FC22E7408A008BF8A6 /* Contact */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		8389B5FC22E7408A008BF8A6 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				8389B5FD22E7409D008BF8A6 /* ContactController.swift */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
+		8389B5FF22E745AE008BF8A6 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contact;
 			sourceTree = "<group>";
 		};
 		83FB2D9522E1EC960094F166 = {
@@ -228,6 +247,7 @@
 			files = (
 				83FB2DA422E1EC960094F166 /* ViewController.swift in Sources */,
 				83FB2DA222E1EC960094F166 /* AppDelegate.swift in Sources */,
+				8389B5FE22E7409D008BF8A6 /* ContactController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

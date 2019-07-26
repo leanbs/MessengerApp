@@ -18,14 +18,16 @@ class ViewController: ASTabBarController {
         
         viewControllers = [
             createTabItem(viewController: ASViewController(), title: "Chat"),
-            createTabItem(viewController: ASViewController(), title: "Contact"),
+            createTabItem(viewController: ContactController(), title: "Contact"),
             createTabItem(viewController: ASViewController(), title: "Discover"),
         ]
+        
+        // for development purposes
+        self.selectedIndex = 1
     }
     
     
     fileprivate func createTabItem(viewController: UIViewController, title: String) -> UIViewController {
-        viewController.view.backgroundColor = .white
         viewController.tabBarItem.title = title
         
         return viewController
