@@ -16,11 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.makeKeyAndVisible()
-        self.window = window
+        let screenSize = UIScreen.main.bounds.size
+        window = UIWindow(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
         
-        window.rootViewController = ViewController()
+        window?.rootViewController = ChatRoomViewController()
+        window?.makeKeyAndVisible()
         
         return true
     }
