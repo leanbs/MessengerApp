@@ -16,26 +16,36 @@ class ChatRoomViewController: ASViewController<ASCollectionNode> {
         Contact(fullname: "Mas Boy", idName: "Penguinqu", profilePicture: #imageLiteral(resourceName: "PP3"))
     ]
     
-    private var messageArr: [Message] = [Message]()
+    private var dataRoomChat: Message
     
     private var rootNode: ASCollectionNode
     
     init() {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 8
+        layout.minimumLineSpacing = 16
         layout.scrollDirection = .vertical
         
-        rootNode = ASCollectionNode(collectionViewLayout: layout)
+        dataRoomChat = Message(dataUser: contactArray[1], messages: [])
         
+        rootNode = ASCollectionNode(collectionViewLayout: layout)
         super.init(node: rootNode)
         
-        configureNodes()
+        dataRoomChat.messages = [
+                ChatMessage(id: "1", isSender: false, date: Date(), text: "Testing1 Testing1Testing1 Testing1Testing1Testing1Testing1 Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1 Testing1Testing1Testing1Testing1Testing1Testing1Testing1"),
+                ChatMessage(id: "2", isSender: true, date: Date(), text: "Testing2"),
+                ChatMessage(id: "3", isSender: true, date: Date(), text: "Testing3 Testing3 Testing3"),
+                ChatMessage(id: "4", isSender: false, date: Date(), text: "Testing3 Testing3 Testing3"),
+                ChatMessage(id: "5", isSender: false, date: Date(), text: "Testing3 Testing3 Testing3"),
+                ChatMessage(id: "6", isSender: false, date: Date(), text: "Testing3 Testing3 Testing3"),
+                ChatMessage(id: "7", isSender: false, date: Date(), text: "Testing3 Testing3 Testing3"),
+                ChatMessage(id: "8", isSender: false, date: Date(), text: "Testing3 Testing3 Testing3"),
+                ChatMessage(id: "9", isSender: false, date: Date(), text: "Testing3 Testing3 Testing3"),
+                ChatMessage(id: "10", isSender: false, date: Date(), text: "Testing3 Testing3 Testing3"),
+                ChatMessage(id: "11", isSender: false, date: Date(), text: "Testing3 Testing3 Testing3"),
+                ChatMessage(id: "11", isSender: false, date: Date(), text: "Asd"),
+            ]
         
-        messageArr = [
-            Message(fromUser: contactArray[0], messages: ChatMessage(id: "1", date: Date(), text: "Testing1Testing1Testing1Testing1Testing1Testing1Testing1 Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1Testing1 Testing1Testing1Testing1Testing1Testing1Testing1Testing1")),
-            Message(fromUser: contactArray[0], messages: ChatMessage(id: "2", date: Date(), text: "Testing2")),
-            Message(fromUser: contactArray[0], messages: ChatMessage(id: "3", date: Date(), text: "Testing3Testing3Testing3")),
-        ]
+        configureNodes()
     }
 
     private func configureNodes() {
@@ -43,7 +53,7 @@ class ChatRoomViewController: ASViewController<ASCollectionNode> {
         rootNode.dataSource = self
         rootNode.delegate = self
         
-        rootNode.backgroundColor = .yellow
+        rootNode.backgroundColor = .white
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -57,25 +67,29 @@ extension ChatRoomViewController: ASCollectionDelegate {
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
-        return messageArr.count
+        return dataRoomChat.messages.count
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
-        let data = messageArr[indexPath.row].messages
+        let data = dataRoomChat.messages[indexPath.row]
+        let cell = ChatCell(messageInfo: data, userData: dataRoomChat.dataUser)
         
-        let cell = ChatCell(messageInfo: data)
         return cell
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, constrainedSizeForItemAt indexPath: IndexPath) -> ASSizeRange {
         
-        let messageText = messageArr[indexPath.row].messages.text
-        let size = CGSize(width: view.frame.width, height: 1000)
+        let messageText = dataRoomChat.messages[indexPath.row].text
+        let size = CGSize(width: 200, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         
         let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)], context: nil)
-        print("estimate: \(estimatedFrame)")
-        return .init(min: CGSize(width: UIScreen.main.bounds.width, height: 0), max: CGSize(width: (UIScreen.main.bounds.width), height: estimatedFrame.height))
+        
+        return .init(min: CGSize(width: (UIScreen.main.bounds.width), height: 0), max: CGSize(width: (UIScreen.main.bounds.width), height: estimatedFrame.height + 16))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
     }
 }
 
@@ -95,12 +109,13 @@ struct Contact {
 
 struct ChatMessage {
     let id: String
+    let isSender: Bool
     let date: Date
     let text: String
 }
 
 public struct Message {
-    let fromUser: Contact
-    let messages: ChatMessage
+    let dataUser: Contact
+    var messages: [ChatMessage]
 }
 
